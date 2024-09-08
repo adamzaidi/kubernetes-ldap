@@ -5,7 +5,7 @@ COPY . .
 RUN go test -mod=vendor ./...
 RUN CGO_ENABLED=0 GOOS=linux go build -mod=vendor --ldflags "-s -w" -o bin/kubernetes-ldap .
 
-FROM alpine:3.12.0
+FROM alpine:3.19.4
 ## use https
 RUN sed -i 's/http\:\/\//https\:\/\//g' /etc/apk/repositories
 RUN apk add --no-cache ca-certificates
